@@ -23,11 +23,27 @@ class MyLinkedList<E> {
             this.last = newObject;
         }
         else{
-
+            Node newObject = new Node(size,object,null,this.last);
+            this.last = newObject;
+            size++;
 
         }
-
+    }
+    public int size(){
+        return size;
+    }
+    public void clear(){
+        this.size = 0;
+        this.last = null;
+        this.first = null;
     }
 
-
+}
+class LinkedTest{
+    public static void main(String[] args) {
+        MyLinkedList<Integer> lol = new <Integer>MyLinkedList();
+        lol.add(1);
+        lol.add(5);
+        lol.add(1);
+    }
 }
