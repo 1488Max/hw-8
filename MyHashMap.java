@@ -25,7 +25,7 @@ public class MyHashMap {
                 table[i] = null;
         }
 
-        public Integer get(Integer key) {
+        public Object get(Integer key) {
             int hash = key.hashCode() % TABLE_SIZE;
             HashEntry curr = table[hash];
             while (curr != null) {
@@ -37,7 +37,7 @@ public class MyHashMap {
         }
 
 
-        public Integer remove(Integer key) {
+        public Object remove(Integer key) {
             int hash = key.hashCode() % TABLE_SIZE;
             HashEntry curr = table[hash];
             if (curr == null)
@@ -48,7 +48,7 @@ public class MyHashMap {
             }
             while (curr.next != null) {
                 if (curr.next.key == key) {
-                    Integer ret = curr.next.value;
+                    Object ret = curr.next.value;
                     curr.next = curr.next.next;
                     return ret;
                 }
@@ -58,7 +58,7 @@ public class MyHashMap {
         }
 
         private class HashEntry {
-            Integer key, value;
+            Object key, value;
             HashEntry next;
 
             HashEntry(Integer key, Integer value) {
