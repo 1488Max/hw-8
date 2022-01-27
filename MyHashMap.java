@@ -12,7 +12,13 @@ public class MyHashMap {
         public int getSize() {
             return size;
         }
-
+        public void put(Integer key, Integer value) {
+            int hash = key.hashCode() % TABLE_SIZE;
+            remove(key);
+            HashEntry next = table[hash];
+            table[hash] = new HashEntry(key, value);
+            table[hash].next = next;
+        }
         public void clear() {
             size = 0;
             for (int i = 0; i < TABLE_SIZE; i++)
