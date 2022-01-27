@@ -2,11 +2,11 @@ public class MyHashMap {
     public static class HashMap {
         private int TABLE_SIZE;
         private int size;
-        private HashEntry[] table;
+        private Node[] table;
         public HashMap(int TABLE_SIZE) {
             this.TABLE_SIZE = TABLE_SIZE;
             this.size = 0;
-            this.table = new HashEntry[TABLE_SIZE];
+            this.table = new Node[TABLE_SIZE];
         }
 
         public int getSize() {
@@ -15,8 +15,8 @@ public class MyHashMap {
         public void put(Integer key, Integer value) {
             int hash = key.hashCode() % TABLE_SIZE;
             remove(key);
-            HashEntry next = table[hash];
-            table[hash] = new HashEntry(key, value);
+            Node next = table[hash];
+            table[hash] = new Node(key, value);
             table[hash].next = next;
         }
         public void clear() {
@@ -27,7 +27,7 @@ public class MyHashMap {
 
         public Object get(Integer key) {
             int hash = key.hashCode() % TABLE_SIZE;
-            HashEntry curr = table[hash];
+            Node curr = table[hash];
             while (curr != null) {
                 if (curr.key == key)
                     return curr.value;
@@ -39,7 +39,7 @@ public class MyHashMap {
 
         public Object remove(Integer key) {
             int hash = key.hashCode() % TABLE_SIZE;
-            HashEntry curr = table[hash];
+            Node curr = table[hash];
             if (curr == null)
                 return null;
             else if (curr.key == key) {
@@ -57,11 +57,11 @@ public class MyHashMap {
             return null;
         }
 
-        private class HashEntry {
+        private class Node {
             Object key, value;
-            HashEntry next;
+            Node next;
 
-            HashEntry(Integer key, Integer value) {
+            Node(Integer key, Integer value) {
                 this.key = key;
                 this.value = value;
                 next = null;
