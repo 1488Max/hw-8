@@ -12,7 +12,7 @@ public class MyHashMap {
         public int getSize() {
             return size;
         }
-        public void put(Integer key, Integer value) {
+        public void put(Object key, Object value) {
             int hash = key.hashCode() % TABLE_SIZE;
             remove(key);
             Node next = table[hash];
@@ -25,7 +25,7 @@ public class MyHashMap {
                 table[i] = null;
         }
 
-        public Object get(Integer key) {
+        public Object get(Object key) {
             int hash = key.hashCode() % TABLE_SIZE;
             Node curr = table[hash];
             while (curr != null) {
@@ -37,7 +37,7 @@ public class MyHashMap {
         }
 
 
-        public Object remove(Integer key) {
+        public Object remove(Object key) {
             int hash = key.hashCode() % TABLE_SIZE;
             Node curr = table[hash];
             if (curr == null)
@@ -61,7 +61,7 @@ public class MyHashMap {
             Object key, value;
             Node next;
 
-            Node(Integer key, Integer value) {
+            Node(Object key, Object value) {
                 this.key = key;
                 this.value = value;
                 next = null;
