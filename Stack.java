@@ -46,7 +46,7 @@ public class Stack<T> {
         return stack[stack.length-1];
     }
 
-    public Object poll(){
+    public Object pop(){
 
         Object last = stack[stack.length-1];
         stack[stack.length-1] = null;
