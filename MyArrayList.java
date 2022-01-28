@@ -42,7 +42,7 @@ class MyTest{
         my.add("14");
         my.remove(0);
         System.out.println("my.get(0) = " + my.get(0));
-        System.out.println("my = " + my.size());
+        System.out.println("my size = " + my.size());
     }
 
 }
