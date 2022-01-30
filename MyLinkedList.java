@@ -1,4 +1,4 @@
-public class  LinkedList<E> {
+public class  MyLinkedList<E> {
 
     Node head; // head of list
     static class Node<E> {
@@ -8,27 +8,26 @@ public class  LinkedList<E> {
 
 
 
-        Node(Object d)
+        Node(E d)
         {
             data = d;
             next = null;
         }
     }
 
-    public static LinkedList add(LinkedList list,
-                                    Object data)
+    public  void add(E data)
     {
 
         Node new_node = new Node(data);
         new_node.next = null;
 
 
-        if (list.head == null) {
-            list.head = new_node;
+        if (this.head == null) {
+            this.head = new_node;
         }
         else {
 
-            Node last = list.head;
+            Node last = this.head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -37,14 +36,12 @@ public class  LinkedList<E> {
         }
 
 
-
-        return list;
     }
-    public static Object get(int index,LinkedList list){
+    public  E get(int index){
 
         int counter = 0;
 
-        Node currNode = list.head, prev = null;
+        Node currNode = this.head, prev = null;
 
         while (counter<index){
 
@@ -54,12 +51,12 @@ public class  LinkedList<E> {
 
         }
 
-        return currNode.data;
+        return (E) currNode.data;
     }
-    public static int size(LinkedList list){
+    public  int size(){
         int size = 0;
 
-        Node currNode = list.head, prev = null;
+        Node currNode = this.head, prev = null;
 
         while (currNode != null) {
 
@@ -72,9 +69,9 @@ public class  LinkedList<E> {
     }
 
 
-    public static void printList(LinkedList list)
+    public  void printList()
     {
-        Node currNode = list.head;
+        Node currNode = this.head;
 
         System.out.print("\nLinkedList: ");
 
@@ -91,21 +88,21 @@ public class  LinkedList<E> {
 
 
 
-    public static LinkedList remove(LinkedList list, int index)
+    public  void remove(int index)
     {
 
-        Node currNode = list.head, prev = null;
+        Node currNode = this.head, prev = null;
 
 
         if (index == 0 && currNode != null) {
-            list.head = currNode.next; // Changed head
+            this.head = currNode.next; // Changed head
 
             // Display the message
             System.out.println(
                     index + " position element deleted");
 
             // Return the updated List
-            return list;
+
         }
 
 
@@ -131,32 +128,12 @@ public class  LinkedList<E> {
 
 
 
-        return list;
-    }
-    public void clear(LinkedList list){
-        list.head = null;
 
     }
+    public void clear(){
+        this.head = null;
 
-    public static void main(String[] args)
-    {
-        LinkedList list = new LinkedList();
-
-       
-        list = add(list, 1);
-        list = add(list, 2);
-        list = add(list, 3);
-        list = add(list, 4);
-        list = add(list, 5);
-        list = add(list, 6);
-        list = add(list, 7);
-        list = add(list, 8);
-         System.out.println("list = " + get(1,list));
-
-        printList(list);
-
-       
-        list.clear(list);
-        printList(list);
     }
+
+
 }

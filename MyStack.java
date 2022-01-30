@@ -1,14 +1,14 @@
-public class Stack<T> {
-    private Object[] stack = new Object[0];
+public class MyStack<T> {
+    private T[] stack = (T[]) new Object[0];
     private int counter = 0;
 
 
-    public void add(T value) {
+    public void push(T value) {
 
-        Object[] newStack = new Object[stack.length + 1];
+        T[] newStack = (T[]) new Object[stack.length + 1];
         for (int i = 0; i < newStack.length - 1; i++) {
 
-            newStack[i < newStack.length ? i : i + 1] = stack[i];
+            newStack[i] = stack[i];
         }
 
         newStack[newStack.length - 1] = value;
@@ -20,11 +20,11 @@ public class Stack<T> {
 
         if(index <= counter-1){
 
-            for(int i = index;i < stack.length-1;i++){
+            for(int i = index;i < counter-1;i++){
 
                 stack[i] = stack[i+1];
             }
-            stack[stack.length-1] = null;
+            stack[counter-1] = null;
             counter--;
         }
         else System.out.println("Index is incorrect");
@@ -37,21 +37,21 @@ public class Stack<T> {
 
     public void clear(){
 
-        stack = new Object[0];
+        stack = (T[]) new Object[0];
         counter = 0;
     }
 
-    public Object peek(){
+    public T peek(){
 
-        return stack[stack.length-1];
+        return stack[counter-1];
     }
 
-    public Object pop(){
+    public T pop(){
 
-        Object last = stack[stack.length-1];
-        stack[stack.length-1] = null;
+        T last = stack[counter-1];
+        stack[counter-1] = null;
         counter--;
-        return last;
+        return (T) last;
     }
 
 }

@@ -1,9 +1,9 @@
-class MyArrayList <T>{
-    private Object[] list = new Object[0];
+public class MyArrayList <T>{
+    private T[] list = (T[]) new Object[0];
     private int counter = 0;
 
     public void add(T value){
-        Object[] newList = new Object[list.length + 1];
+        T[] newList = (T[]) new Object[list.length + 1];
         for (int i = 0; i < newList.length - 1; i++){
             newList[i < newList.length ? i : i + 1] = list[i];
         }
@@ -31,7 +31,7 @@ class MyArrayList <T>{
         return counter;
     }
     public void clear(){
-        list = new Object[0];
+        list = (T[]) new Object[0];
         counter = 0;
     }
 }
